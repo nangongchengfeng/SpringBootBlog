@@ -51,7 +51,11 @@ public class TypeServiceImpl implements TypeService {
         return typeRepository.findAll();
     }
 
-
+    /**
+     * 首页分类的展示
+     * @param size
+     * @return
+     */
     @Override
     public List<Type> listTypeTop(Integer size) {
         Sort sort = new Sort(Sort.Direction.DESC,"blogs.size");

@@ -46,7 +46,7 @@ public class Blog {
 
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();
-
+    //不需要放进数据库
     @Transient
     private String tagIds;
 

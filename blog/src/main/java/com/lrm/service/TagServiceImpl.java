@@ -15,9 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by limi on 2017/10/16.
- */
+
 @Service
 public class TagServiceImpl implements TagService {
 
@@ -52,6 +50,11 @@ public class TagServiceImpl implements TagService {
         return tagRepository.findAll();
     }
 
+    /**
+     * 首页的top站展示
+     * @param size
+     * @return
+     */
     @Override
     public List<Tag> listTagTop(Integer size) {
         Sort sort = new Sort(Sort.Direction.DESC, "blogs.size");
@@ -65,6 +68,11 @@ public class TagServiceImpl implements TagService {
         return tagRepository.findAll(convertToList(ids));
     }
 
+    /**
+     * 把字符串转换成类
+     * @param ids
+     * @return
+     */
     private List<Long> convertToList(String ids) {
         List<Long> list = new ArrayList<>();
         if (!"".equals(ids) && ids != null) {

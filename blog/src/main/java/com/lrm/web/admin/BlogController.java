@@ -22,12 +22,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by limi on 2017/10/15.
+ * 南宫乘风
  */
 @Controller
 @RequestMapping("/admin")
 public class BlogController {
 
+    /**
+     * 各种跳转方法构建
+     */
     private static final String INPUT = "admin/blogs-input";
     private static final String LIST = "admin/blogs";
     private static final String REDIRECT_LIST = "redirect:/admin/blogs";
@@ -40,14 +43,29 @@ public class BlogController {
     @Autowired
     private TagService tagService;
 
+    /**
+     * 博客列表浏览
+     * @param pageable
+     * @param blog
+     * @param model
+     * @return
+     */
     @GetMapping("/blogs")
     public String blogs(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
                         BlogQuery blog, Model model) {
+        //初始化分类，查询所有分类
         model.addAttribute("types", typeService.listType());
         model.addAttribute("page", blogService.listBlog(pageable, blog));
         return LIST;
     }
 
+    /**
+     * 博客列表搜索
+     * @param pageable
+     * @param blog
+     * @param model
+     * @return
+     */
     @PostMapping("/blogs/search")
     public String search(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
                          BlogQuery blog, Model model) {
@@ -55,7 +73,11 @@ public class BlogController {
         return "admin/blogs :: blogList";
     }
 
-
+    /**
+     * 博客添加
+     * @param model
+     * @return
+     */
     @GetMapping("/blogs/input")
     public String input(Model model) {
         setTypeAndTag(model);
@@ -63,12 +85,21 @@ public class BlogController {
         return INPUT;
     }
 
+    /**
+     * 添加时的初始化，查询分类和标签
+     * @param model
+     */
     private void setTypeAndTag(Model model) {
         model.addAttribute("types", typeService.listType());
         model.addAttribute("tags", tagService.listTag());
     }
 
-
+    /**
+     * 修改博客内容
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/blogs/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         setTypeAndTag(model);
@@ -79,10 +110,18 @@ public class BlogController {
     }
 
 
-
+    /**
+     * 公用（保存和修改）
+     * @param blog
+     * @param attributes
+     * @param session
+     * @return
+     */
     @PostMapping("/blogs")
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session) {
+        //拿到当前的登录用户端的seesion
         blog.setUser((User) session.getAttribute("user"));
+
         blog.setType(typeService.getType(blog.getType().getId()));
         blog.setTags(tagService.listTag(blog.getTagIds()));
         Blog b;
@@ -100,7 +139,12 @@ public class BlogController {
         return REDIRECT_LIST;
     }
 
-
+    /**
+     * 删除博客
+     * @param id
+     * @param attributes
+     * @return
+     */
     @GetMapping("/blogs/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes) {
         blogService.deleteBlog(id);

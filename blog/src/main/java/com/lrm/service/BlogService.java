@@ -15,6 +15,7 @@ public interface BlogService {
 
     Blog getBlog(Long id);
 
+    //编辑器转换为html
     Blog getAndConvert(Long id);
 
     Page<Blog> listBlog(Pageable pageable, BlogQuery blog);
@@ -23,11 +24,13 @@ public interface BlogService {
 
     Page<Blog> listBlog(Long tagId, Pageable pageable);
 
+    //首页查询方法
     Page<Blog> listBlog(String query, Pageable pageable);
 
+    //首页展示
     List<Blog> listRecommendBlogTop(Integer size);
 
-    Map<String,List<Blog>> archiveBlog();
+    Map<String, List<Blog>> archiveBlog();
 
     Long countBlog();
 
