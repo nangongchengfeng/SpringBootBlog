@@ -6,10 +6,22 @@ import com.lrm.po.Tag;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+<<<<<<< HEAD
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
+=======
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+>>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
 /**
  * Created by limi on 2017/10/16.
  */
@@ -42,6 +54,38 @@ public class TagServiceImpl implements TagService {
         return tagRepository.findAll(pageable);
     }
 
+<<<<<<< HEAD
+    @Override
+    public List<Tag> listTag() {
+        return tagRepository.findAll();
+    }
+
+    @Override
+    public List<Tag> listTagTop(Integer size) {
+        Sort sort = new Sort(Sort.Direction.DESC, "blogs.size");
+        Pageable pageable = new PageRequest(0, size, sort);
+        return tagRepository.findTop(pageable);
+    }
+
+
+    @Override
+    public List<Tag> listTag(String ids) { //1,2,3
+        return tagRepository.findAll(convertToList(ids));
+    }
+
+    private List<Long> convertToList(String ids) {
+        List<Long> list = new ArrayList<>();
+        if (!"".equals(ids) && ids != null) {
+            String[] idarray = ids.split(",");
+            for (int i=0; i < idarray.length;i++) {
+                list.add(new Long(idarray[i]));
+            }
+        }
+        return list;
+    }
+
+=======
+>>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
 
     @Transactional
     @Override
