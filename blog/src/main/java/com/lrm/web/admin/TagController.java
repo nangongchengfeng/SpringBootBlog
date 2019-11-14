@@ -28,15 +28,12 @@ public class TagController {
     @Autowired
     private TagService tagService;
 
-<<<<<<< HEAD
     /**
      * 查看标签的列表
      * @param pageable
      * @param model
      * @return
      */
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @GetMapping("/tags")
     public String tags(@PageableDefault(size = 3,sort = {"id"},direction = Sort.Direction.DESC)
                                     Pageable pageable, Model model) {
@@ -44,36 +41,29 @@ public class TagController {
         return "admin/tags";
     }
 
-<<<<<<< HEAD
     /**
      * 添加标签
      * @param model
      * @return
      */
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @GetMapping("/tags/input")
     public String input(Model model) {
         model.addAttribute("tag", new Tag());
         return "admin/tags-input";
     }
 
-<<<<<<< HEAD
     /**
      * 更新标签
      * @param id
      * @param model
      * @return
      */
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @GetMapping("/tags/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         model.addAttribute("tag", tagService.getTag(id));
         return "admin/tags-input";
     }
 
-<<<<<<< HEAD
     /**
      * 添加标签的数据格式（校检）
      * @param tag
@@ -81,9 +71,6 @@ public class TagController {
      * @param attributes
      * @return
      */
-=======
-
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @PostMapping("/tags")
     public String post(@Valid Tag tag,BindingResult result, RedirectAttributes attributes) {
         Tag tag1 = tagService.getTagByName(tag.getName());
@@ -102,7 +89,6 @@ public class TagController {
         return "redirect:/admin/tags";
     }
 
-<<<<<<< HEAD
     /**
      * 修改标签的数据格式（校检）
      * @param tag
@@ -111,9 +97,6 @@ public class TagController {
      * @param attributes
      * @return
      */
-=======
-
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @PostMapping("/tags/{id}")
     public String editPost(@Valid Tag tag, BindingResult result,@PathVariable Long id, RedirectAttributes attributes) {
         Tag tag1 = tagService.getTagByName(tag.getName());
@@ -132,15 +115,12 @@ public class TagController {
         return "redirect:/admin/tags";
     }
 
-<<<<<<< HEAD
     /**
      * 删除标签
      * @param id
      * @param attributes
      * @return
      */
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @GetMapping("/tags/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes) {
         tagService.deleteTag(id);

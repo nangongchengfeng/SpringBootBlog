@@ -19,11 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-<<<<<<< HEAD
 import javax.servlet.http.HttpSession;
 
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
 /**
  * Created by limi on 2017/10/15.
  */
@@ -50,7 +47,6 @@ public class BlogController {
         model.addAttribute("page", blogService.listBlog(pageable, blog));
         return LIST;
     }
-<<<<<<< HEAD
 
     @PostMapping("/blogs/search")
     public String search(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
@@ -114,6 +110,4 @@ public class BlogController {
 
 
 
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
 }

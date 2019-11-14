@@ -17,12 +17,9 @@ public class Blog {
     private Long id;
 
     private String title;
-<<<<<<< HEAD
 
     @Basic(fetch = FetchType.LAZY)
     @Lob
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     private String content;
     private String firstPicture;
     private String flag;
@@ -50,14 +47,11 @@ public class Blog {
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();
 
-<<<<<<< HEAD
     @Transient
     private String tagIds;
 
     private String description;
 
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     public Blog() {
     }
 

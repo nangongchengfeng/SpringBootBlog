@@ -12,11 +12,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
 import java.util.List;
 
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
 /**
  * Created by limi on 2017/10/16.
  */
@@ -49,7 +46,6 @@ public class TypeServiceImpl implements TypeService {
         return typeRepository.findAll(pageable);
     }
 
-<<<<<<< HEAD
     @Override
     public List<Type> listType() {
         return typeRepository.findAll();
@@ -63,8 +59,6 @@ public class TypeServiceImpl implements TypeService {
         return typeRepository.findTop(pageable);
     }
 
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
 
     @Transactional
     @Override

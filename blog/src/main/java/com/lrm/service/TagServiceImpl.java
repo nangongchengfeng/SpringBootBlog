@@ -6,7 +6,6 @@ import com.lrm.po.Tag;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-<<<<<<< HEAD
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -16,12 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-=======
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
 /**
  * Created by limi on 2017/10/16.
  */
@@ -54,7 +47,6 @@ public class TagServiceImpl implements TagService {
         return tagRepository.findAll(pageable);
     }
 
-<<<<<<< HEAD
     @Override
     public List<Tag> listTag() {
         return tagRepository.findAll();
@@ -84,8 +76,6 @@ public class TagServiceImpl implements TagService {
         return list;
     }
 
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
 
     @Transactional
     @Override

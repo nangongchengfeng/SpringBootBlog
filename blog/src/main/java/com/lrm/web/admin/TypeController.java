@@ -17,12 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
-<<<<<<< HEAD
-=======
-/**
- * Created by limi on 2017/10/16.
- */
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
 
 @Controller
 @RequestMapping("/admin")
@@ -31,15 +25,12 @@ public class TypeController {
     @Autowired
     private TypeService typeService;
 
-<<<<<<< HEAD
     /**
      * 查看分类列表
      * @param pageable
      * @param model
      * @return
      */
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @GetMapping("/types")
     public String types(@PageableDefault(size = 3,sort = {"id"},direction = Sort.Direction.DESC)
                                     Pageable pageable, Model model) {
@@ -47,36 +38,29 @@ public class TypeController {
         return "admin/types";
     }
 
-<<<<<<< HEAD
     /**
      * 添加的接口
      * @param model
      * @return
      */
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @GetMapping("/types/input")
     public String input(Model model) {
         model.addAttribute("type", new Type());
         return "admin/types-input";
     }
 
-<<<<<<< HEAD
     /**
      * 修改的接口
      * @param id
      * @param model
      * @return
      */
-=======
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @GetMapping("/types/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         model.addAttribute("type", typeService.getType(id));
         return "admin/types-input";
     }
 
-<<<<<<< HEAD
     /**
      * 添加数据的提交
      * @param type
@@ -84,9 +68,6 @@ public class TypeController {
      * @param attributes
      * @return
      */
-=======
-
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @PostMapping("/types")
     public String post(@Valid Type type,BindingResult result, RedirectAttributes attributes) {
         Type type1 = typeService.getTypeByName(type.getName());
@@ -105,7 +86,6 @@ public class TypeController {
         return "redirect:/admin/types";
     }
 
-<<<<<<< HEAD
     /**
      * 修改数据的提交
      * @param type
@@ -114,9 +94,6 @@ public class TypeController {
      * @param attributes
      * @return
      */
-=======
-
->>>>>>> 0f5a6ff24b56c741c9adf0a03207d5eb43edcb36
     @PostMapping("/types/{id}")
     public String editPost(@Valid Type type, BindingResult result,@PathVariable Long id, RedirectAttributes attributes) {
         Type type1 = typeService.getTypeByName(type.getName());
