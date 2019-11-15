@@ -62,6 +62,12 @@ public class IndexController {
         return "search";
     }
 
+    /**
+     * 博客详情
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id, Model model) {
 
