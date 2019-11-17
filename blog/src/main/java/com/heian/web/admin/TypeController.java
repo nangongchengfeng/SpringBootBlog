@@ -17,7 +17,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
-
+/**
+ * Created by 南宫乘风
+ */
 @Controller
 @RequestMapping("/admin")
 public class TypeController {
