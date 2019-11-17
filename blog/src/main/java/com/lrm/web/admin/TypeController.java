@@ -17,9 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
-/**
- * Created by limi on 2017/10/16.
- */
 
 @Controller
 @RequestMapping("/admin")
@@ -28,6 +25,12 @@ public class TypeController {
     @Autowired
     private TypeService typeService;
 
+    /**
+     * 查看分类列表
+     * @param pageable
+     * @param model
+     * @return
+     */
     @GetMapping("/types")
     public String types(@PageableDefault(size = 3,sort = {"id"},direction = Sort.Direction.DESC)
                                     Pageable pageable, Model model) {
@@ -35,19 +38,36 @@ public class TypeController {
         return "admin/types";
     }
 
+    /**
+     * 添加的接口
+     * @param model
+     * @return
+     */
     @GetMapping("/types/input")
     public String input(Model model) {
         model.addAttribute("type", new Type());
         return "admin/types-input";
     }
 
+    /**
+     * 修改的接口
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/types/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         model.addAttribute("type", typeService.getType(id));
         return "admin/types-input";
     }
 
-
+    /**
+     * 添加数据的提交
+     * @param type
+     * @param result
+     * @param attributes
+     * @return
+     */
     @PostMapping("/types")
     public String post(@Valid Type type,BindingResult result, RedirectAttributes attributes) {
         Type type1 = typeService.getTypeByName(type.getName());
@@ -66,7 +86,14 @@ public class TypeController {
         return "redirect:/admin/types";
     }
 
-
+    /**
+     * 修改数据的提交
+     * @param type
+     * @param result
+     * @param id
+     * @param attributes
+     * @return
+     */
     @PostMapping("/types/{id}")
     public String editPost(@Valid Type type, BindingResult result,@PathVariable Long id, RedirectAttributes attributes) {
         Type type1 = typeService.getTypeByName(type.getName());
@@ -85,6 +112,12 @@ public class TypeController {
         return "redirect:/admin/types";
     }
 
+    /**
+     * 删除数据
+     * @param id
+     * @param attributes
+     * @return
+     */
     @GetMapping("/types/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes) {
         typeService.deleteType(id);

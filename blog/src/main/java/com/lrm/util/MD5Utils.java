@@ -1,13 +1,10 @@
 package com.lrm.util;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
 /**
- * Created by limi on 2017/10/15.
+ * 南宫乘风
  */
 public class MD5Utils {
-
     /**
      * MD5加密类
      * @param str 要加密的字符串
@@ -36,10 +33,12 @@ public class MD5Utils {
             e.printStackTrace();
             return null;
         }
-
     }
 
-
+    /**
+     * 测试方法
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println(code("111111"));
     }
