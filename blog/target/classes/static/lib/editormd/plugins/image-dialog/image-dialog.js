@@ -108,18 +108,12 @@
 
                             this.hide().lockScreen(false).hideMask();
 
-                            //删除对话框
-                            this.remove();
-
                             return false;
                         }],
 
                         cancel : [lang.buttons.cancel, function() {
                             this.hide().lockScreen(false).hideMask();
 
-                            //删除对话框
-                            this.remove();
-                            
                             return false;
                         }]
                     }
@@ -135,7 +129,7 @@
 
 				fileInput.bind("change", function() {
 					var fileName  = fileInput.val();
-					var isImage   = new RegExp("(\\.(" + settings.imageFormats.join("|") + "))$", "i"); // /(\.(webp|jpg|jpeg|gif|bmp|png))$/
+					var isImage   = new RegExp("(\\.(" + settings.imageFormats.join("|") + "))$"); // /(\.(webp|jpg|jpeg|gif|bmp|png))$/
 
 					if (fileName === "")
 					{
