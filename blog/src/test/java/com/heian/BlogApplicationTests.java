@@ -1,4 +1,4 @@
-package com.lrm;
+package com.heian;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
